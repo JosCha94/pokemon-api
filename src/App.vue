@@ -6,20 +6,30 @@ import HelloWorld from "./components/HelloWorld.vue";
 <template>
   <div class="container">
     <nav class="navbar navbar-expand-lg bg-light mb-3">
-      <div class="container-fluid">
+      <div class="container-fluid ">
+        <RouterLink class="navbar-brand" to="/">
+          <img
+            src="@/assets/logo.svg"
+            alt="Logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+          />
+          Pokemon API
+        </RouterLink>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <RouterLink to="/">Home</RouterLink>
+              <RouterLink class="btn btn-outline-success" to="/">Home</RouterLink>
+            </li>
+            <li class="nav-item mx-3">
+              <RouterLink class="btn btn-outline-success" to="/about">About</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/about">About</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/pokemons">Pokemons</RouterLink>
+              <RouterLink class="btn btn-outline-success" to="/pokemons">Pokemons</RouterLink>
             </li>
           </ul>
-      </div>
+        </div>
       </div>
     </nav>
     <RouterView />
