@@ -1,37 +1,27 @@
 <script setup>
-import axios from "axios";
-import { ref } from "vue";
+// import axios from "axios";
+// import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useGetData } from "@/composables/getData";
+
+const { data, loading, getData, errorData } = useGetData();
 
 const router = useRouter();
 const route = useRoute();
 
-const obtenerData = async () => {
-  try {
-    const { data } = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${route.params.name}`
-    );
-    console.log(data);
-    poke.value = data;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 const retro = () => {
-  router.push("/pokemons");
+  router.push("/pokemons_composable");
 };
 
-const poke = ref({});
-
-obtenerData();
+getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
 </script>
 
 <template>
-  <div v-if="poke">
-    <img :src="poke.sprites?.front_default" alt="poke.name" />
-    <h2>pokemon: {{ $route.params.name }}</h2>    
+  <p v-if="loading">Cargando información ...</p>
+  <div class="alert alert-danger mt-3" v-if="errorData">No existe ese pokemon</div>
+  <div v-if="data">
+    <img :src="data.sprites?.front_default" alt="data.name" />
+    <h2>pokemon: {{ $route.params.name }}</h2>
   </div>
-  <h1 v-else>No existe ese pokemon</h1>
   <button class="btn btn-outline-success" @click="retro">Regresar</button>
 </template>

@@ -5,6 +5,7 @@ export const useGetData = () => {
 
     const data = ref(null)  
     const loading = ref(true)  
+    const errorData = ref(null)
 
     const getData = async (url) => {
         loading.value = true;
@@ -13,7 +14,8 @@ export const useGetData = () => {
             data.value = res.data
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            errorData.value='error de server'
         }finally{
             loading.value = false;
         }
@@ -21,6 +23,7 @@ export const useGetData = () => {
     return {
         getData,
         data,
-        loading
+        loading,
+        errorData
     }
 };
