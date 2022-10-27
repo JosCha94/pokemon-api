@@ -28,6 +28,9 @@ import HelloWorld from "./components/HelloWorld.vue";
             <li class="nav-item">
               <RouterLink class="btn btn-outline-success" to="/pokemons">Pokemons</RouterLink>
             </li>
+            <li class="nav-item mx-3">
+              <RouterLink class="btn btn-outline-success" to="/pokemons_composable">Pokemons(Composables)</RouterLink>
+            </li>
           </ul>
         </div>
       </div>
