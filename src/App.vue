@@ -35,7 +35,10 @@ import HelloWorld from "./components/HelloWorld.vue";
         </div>
       </div>
     </nav>
-    <RouterView />
+    <div class="text-center">
+      <RouterView />
+    </div>
+    
   </div>
 </template>
 
